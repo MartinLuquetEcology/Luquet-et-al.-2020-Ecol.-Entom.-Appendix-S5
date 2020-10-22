@@ -1,0 +1,33 @@
+--- Information about appendix S5
+
+--- All these R scripts were used to obtain the results presented in the paper
+--- Written in R version 3.6.0 (R Core Team, 2019)
+--- "aervi_data.txt" contains the Aphidius ervi dataset used to build and check the model
+--- The "Saved objects" folder contains saved R objects
+----------- Parameters used for the simulation experiment (defined in the script "Defining variance treatments.R")
+----------- Simulation results (tables of performance on each dataset from each algorithm) (obtained from "Simulation experiment.R")
+------- These saved objects are used in the different scripts
+--- To reproduce the experiment, the scripts must be executed in a certain order (see below)
+
+---Script description
+---- "1_Sugar model.R" builds the model used to simulate all datasets in the experiment
+---- "2_Estimating A. ervi parameters.R" estimates model parameters on the A. ervi dataset
+---------- Requires the document "aervi_data.txt" (see in the script)
+---- "3_Checking the model.R" presents various ways to check that the model generates meaningful simulations
+---------- Must be run after "1_Sugar model.R" and "2_Estimating A. ervi parameters.R"
+---- "4_Defining variance treatments.R" defines and saves the different parameter sets used in the simulation experiment
+---------- Must be run after "1_Sugar model.R" and "2_Estimating A. ervi parameters.R"
+---- "5_simul.functions.R" builds the different functions used to handle and compare the performances of simulated datasets
+---- "6_Simulation experiment.R" simulates all the datasets using the different parameter sets
+---------- Must be run after "1_Sugar model.R" and "5_simul.functions.R"
+---------- Beware: Running this script will take a very long time (probably several hours or days/treatment)
+---------- Beware: If you run this script, this will replace the "Saved objects" already stored in the folder, although they sould be the same
+---- "7_Plotting functions for simulated data.R" generates functions to easily analyse simulation results visually
+---- "8_Simulation results & graphs.R" generates various graphs to analyse simulation results using the previous functions
+---------- Must be run after "7_Plotting functions for simulated data.R"
+---- "9_Noise Index calculation.R" calculates the "noise index" for each simulated datasets and analyse its correlation with model performance
+---------- Must be run after "1_Sugar model.R" and "4_Defining variance treatments.R"
+---- "10_Heatmap.R" creates a function to generate heatmaps, and generates different heatmaps
+---------- Must be run after "7_Plotting functions for simulated data.R" and "8_Simulation results & graphs.R"
+---- "11_KLD vs BC.R" analyses the difference between KLD and BC to interpret prediction performances (see Appendix S9 at the end of the document)
+---------- Must be run after "1_Sugar model.R"
